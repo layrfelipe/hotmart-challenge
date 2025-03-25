@@ -12,4 +12,4 @@ Sistema RAG (Retrieval-Augmented Generation) com dois microsserviços para proce
 1. Clone o repositório
 2. Execute:
 ```bash
-docker-compose up -d
+docker-compose up --build -d
