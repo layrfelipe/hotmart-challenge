@@ -21,7 +21,7 @@ services:
       - ollama
 
   chroma:
-    image: chromadb/chroma:latest
+    image: chromadb/chroma:0.6.3
     ports:
       - "8002:8000"
     volumes:
