@@ -11,8 +11,7 @@ app = FastAPI()
 class Query(BaseModel):
     question: str
 
-# Initialize components
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = HuggingFaceEmbeddings(model_name="multilingual-e5-small")
 vector_db = Chroma(
     persist_directory="./chroma_db",
     embedding_function=embeddings
@@ -20,13 +19,15 @@ vector_db = Chroma(
 
 llm = OllamaLLM(base_url="http://ollama:11434", model="mistral")
 
-prompt_template = """Use o seguinte contexto para responder a pergunta.
-Se não souber a resposta, diga que não sabe, não invente.
+prompt_template = """Aja como um antigo funcionário da Hotmart que conhece a fundo a empresa.
+Se não souber a resposta, diga que não sabe. Não invente.
+Use o seguinte contexto para responder a pergunta.
 
 Contexto: {context}
 Pergunta: {question}
 
 Resposta:"""
+
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["context", "question"]
 )
