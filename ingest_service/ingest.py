@@ -21,19 +21,21 @@ async def ingest_document(url: str = "https://hotmart.com/pt-br/blog/como-funcio
         text = ' '.join([p.get_text() for p in soup.find_all('p')])
         
         text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=500,
-            chunk_overlap=50,
+            chunk_size=1000,
+            chunk_overlap=250,
             length_function=len
         )
         chunks = text_splitter.split_text(text)
         
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        vector_db = Chroma.from_texts(
+        Chroma.from_texts(
             texts=chunks,
             embedding=embeddings,
             persist_directory="./chroma_db"
         )
-        
-        return {"status": "success", "chunks": len(chunks)}
+        return {
+            "status": "success", 
+            "chunks": len(chunks)
+        }
     except Exception as e:
         return {"status": "error", "message": str(e)}
