@@ -55,7 +55,7 @@ async def ingest_document(url: str = "https://hotmart.com/pt-br/blog/como-funcio
         )
         
         chunks = text_splitter.split_text(full_text)
-        embeddings = HuggingFaceEmbeddings(model_name="multilingual-e5-small")
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
         Chroma.from_texts(
             texts=chunks,
             embedding=embeddings,

@@ -11,7 +11,7 @@ app = FastAPI()
 class Query(BaseModel):
     question: str
 
-embeddings = HuggingFaceEmbeddings(model_name="multilingual-e5-small")
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 vector_db = Chroma(
     persist_directory="./chroma_db",
     embedding_function=embeddings
