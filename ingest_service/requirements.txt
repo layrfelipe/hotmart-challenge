@@ -1,0 +1,9 @@
+fastapi
+beautifulsoup4
+requests
+langchain
+langchain-huggingface
+langchain-chroma
+langchain-text-splitters
+pydantic
+uvicorn
