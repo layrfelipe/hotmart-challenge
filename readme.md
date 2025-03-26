@@ -5,7 +5,7 @@ Sistema RAG (Retrieval-Augmented Generation) com dois microsserviços para proce
 ## Pré-requisitos
 - Docker
 - Docker Compose
-- 8GB+ RAM (para rodar o Mistral localmente)
+- 3GB+ RAM (para rodar o tinyllama localmente)
 
 ## Como executar
 

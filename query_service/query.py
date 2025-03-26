@@ -11,17 +11,16 @@ app = FastAPI()
 class Query(BaseModel):
     question: str
 
-embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-small")
 vector_db = Chroma(
     persist_directory="./chroma_db",
     embedding_function=embeddings
 )
 
-llm = OllamaLLM(base_url="http://ollama:11434", model="mistral")
+llm = OllamaLLM(base_url="http://ollama:11434", model="tinyllama", temperature=0.3)
 
-prompt_template = """Aja como um antigo funcionário da Hotmart que conhece a fundo a empresa.
-Se não souber a resposta, diga que não sabe. Não invente.
-Use o seguinte contexto para responder a pergunta.
+prompt_template = """Responda, em português, com clareza e precisão.
+Use exatamente o contexto abaixo para responder.
 
 Contexto: {context}
 Pergunta: {question}
@@ -38,7 +37,7 @@ async def ask_question(query: Query):
         qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="stuff",
-            retriever=vector_db.as_retriever(),
+            retriever=vector_db.as_retriever(search_kwargs={"k": 3}),
             chain_type_kwargs={"prompt": PROMPT}
         )
         
