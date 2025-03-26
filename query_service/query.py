@@ -17,15 +17,12 @@ vector_db = Chroma(
     embedding_function=embeddings
 )
 
-llm = OllamaLLM(base_url="http://ollama:11434", model="tinyllama", temperature=0.3)
+llm = OllamaLLM(base_url="http://ollama:11434", model="tinyllama", temperature=0.2, max_tokens=1000, top_p=0.9)
 
-prompt_template = """Responda, em português, com clareza e precisão.
-Use exatamente o contexto abaixo para responder.
+prompt_template = """Use exatamente o contexto abaixo para responder objetivamente e em português.
 
 Contexto: {context}
-Pergunta: {question}
-
-Resposta:"""
+Pergunta: {question}"""
 
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["context", "question"]
@@ -37,11 +34,12 @@ async def ask_question(query: Query):
         qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="stuff",
-            retriever=vector_db.as_retriever(search_kwargs={"k": 3}),
+            retriever=vector_db.as_retriever(search_kwargs={"k": 1}),
             chain_type_kwargs={"prompt": PROMPT}
         )
         
-        result = qa_chain.invoke({"query": query.question})
+        result = qa_chain.invoke({"query": query.question, "return_only_outputs": True})
+
         return {"question": query.question, "answer": result["result"]}
     except Exception as e:
         return {"error": str(e)}
