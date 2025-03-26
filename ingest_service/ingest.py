@@ -49,7 +49,7 @@ async def ingest_document(url: str = "https://hotmart.com/pt-br/blog/como-funcio
         full_text = ''.join(text_parts)
         
         text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1500,
+            chunk_size=1250,
             chunk_overlap=250,
             length_function=len
         )
