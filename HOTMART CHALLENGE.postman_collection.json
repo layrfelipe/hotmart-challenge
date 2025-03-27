@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "6b82f0bb-7c74-40c0-b9ca-639088de49e4",
+		"name": "HOTMART CHALLENGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33886764"
+	},
+	"item": [
+		{
+			"name": "INGEST FULL BLOG CONTENT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/ingest_full_blog_content"
+			},
+			"response": []
+		},
+		{
+			"name": "QUERY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"question\": \"Creators da Hotmart faturam mais do que afiliados?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8001/query"
+			},
+			"response": []
+		},
+		{
+			"name": "INGEST TEXT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"O que é a Hotmart e como ela funciona? A Hotmart é uma empresa global de tecnologia e educação, líder no mercado de produtos digitais, com sede em Amsterdã, nos Países Baixos (Holanda), e escritórios no Brasil, Espanha, Colômbia, México, Estados Unidos, Reino Unido e México. Contamos com soluções completas para Produtores, Afiliados e alunos. São mais de 580 mil produtos cadastrados, 35 milhões de usuários e vendas realizadas em mais de 188 países. E tudo começou quando João Pedro Resende e Mateus Bicalho se uniram para criar uma solução para quem quisesse vender produtos digitais. Na época, JP tinha criado um ebook sobre estratégia de marketing digital para gamers e encontrou diversos desafios para disponibilizar esse conteúdo online. Com isso, os sócios começaram a trabalhar nesta solução no tempo livre, fizeram um MVP e colocaram no ar, até que conseguiram realizar as primeiras vendas pela plataforma. Então passaram a se dedicar integralmente ao negócio. Em 2011, a Hotmart foi fudada! A maior missão é possibilitar que todos possam viver de suas paixões, compartilhando conhecimento e ajudando no crescimento profissional e pessoal de outras pessoas. Afinal, acreditamos que aprender muda tudo. A gente quer cada vez mais fazer um caminho de onde a gente está saindo de um contexto de plataforma pra se transformar num ecossistema. No ecossistema, a grande diferença é que tem mais serviços em torno de um serviço ou de um público inicial, vamos dizer assim, revelou João Pedro Resende, CEO e co-fundador da Hotmart. A Hotmart ainda oferece ferramentas e soluções que ajudam na hospedagem, divulgação e venda de produtos digitais. Dessa maneira, qualquer pessoa pode criar ou levar seu negócio para a internet, ampliando as suas possibilidades. Como funciona a Hotmart? A Hotmart é uma plataforma de infoprodutos, que oferece diferentes recursos e soluções para quem quer vender e comprar produtos digitais na internet. De maneira resumida, a Hotmart funciona da seguinte maneira: Uma pessoa com conhecimento em determinada área cria um infoproduto (como um curso online ou um ebook) para compartilhar sua habilidade com o mundo. Pessoas com um bom relacionamento e facilidade em fazer vendas ajudam a divulgar e a vender esse produto para o consumidor em troca de uma comissão por venda realizada. O consumidor que está em busca de um novo conhecimento pode comprar o produto em nossa plataforma, pesquisando na página de busca ou seguindo o Link de Divulgação (Hotlink) do Afiliado ou do Produtor. Em outras palavras, a Hotmart oferece uma plataforma EAD que hospeda cursos online e processa todos os pagamentos online em um só lugar, além de oferecer soluções que ajudam a escalar negócios digitais. Porém, o que oferecemos é muito mais do que um canal de hospedagem de conteúdo digital e uma forma de aquisição. A Hotmart é um ecossistema completo e em constante evolução para trazer ainda mais soluções para criar e escalar negócios digitais.  Dados mostram que, na Hotmart, creators faturam 35% mais, sem mexer no esforço operacional. Isso graças ao rápido carregamento, alta taxa de aprovação, variedade de formas de pagamento, usabilidade agradável e ferramentas específicas para aumentar as vendas, como o Order Bump e Funil de Vendas, por exemplo.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/ingest_text"
+			},
+			"response": []
+		}
+	]
+}

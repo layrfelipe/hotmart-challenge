@@ -48,12 +48,16 @@ cd hotmart-challenge
 
 2. Inicie os containers:
 ```bash
-docker-compose up --build -d
+# win
+./build.ps1
+
+# linux
+sh build.sh
 ```
 
 3. Verifique se todos os serviços estão rodando:
 ```bash
-docker-compose ps
+docker ps
 ```
 
 ---
