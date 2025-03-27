@@ -88,6 +88,16 @@ docker-compose ps
 
 ---
 
+## Exemplos de entradas
+
+#### Scripts
+Foram disponibilizados 2 arquivos `run_examples.ps1` e `run_examples.sh` com requisições cURL já prontas para serem executadas
+
+#### Postman
+Também importei para o repositório chamadas Postman caso seja a preferência dos avaliadores
+
+---
+
 ## Documentação da API
 
 A documentação completa da API está disponível através do Swagger UI:
@@ -130,6 +140,9 @@ pytest
 - O modelo Mistral é razoavelmente leve e pode ter limitações em respostas complexas
 - Por uma questão de adequação ao contexto proposto, as respostas são sempre geradas em português
 - O sistema utiliza embeddings multilíngues para melhor processamento do português, tive certa dificuldade em achar modelos leves e eficientes treinados em PT-BR
+- Se houvesse mais tempo eu implementaria 2 coisas importantes que ficaram de fora:
+    - combinação de busca semântica com busca lexical no serviço de query, visando ter mais precisão na busca por vetores relacionados aos prompts;
+    - testes de integração entre os containers;
 
 ## Contato
 
