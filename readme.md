@@ -88,6 +88,16 @@ docker-compose ps
 
 ---
 
+## Exemplos de entradas
+
+#### Scripts
+Foram disponibilizados 2 arquivos `run_examples.ps1` e `run_examples.sh` com requisições cURL já prontas para serem executadas
+
+#### Postman
+Também importei para o repositório chamadas Postman caso seja a preferência dos avaliadores
+
+---
+
 ## Documentação da API
 
 A documentação completa da API está disponível através do Swagger UI:
