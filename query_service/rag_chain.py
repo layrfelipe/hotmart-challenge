@@ -43,6 +43,7 @@ class HotmartRAGSystem:
             
             self.retriever = self.vector_store.as_retriever(
                 search_kwargs={"k": 4},
+                search_type="similarity"
             )
             
             self.prompt_template = """Responda a pergunta em português e com base no contexto fornecido.
