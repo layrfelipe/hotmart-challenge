@@ -29,7 +29,7 @@ O sistema é composto por dois serviços principais:
 - Recuperação de contexto relevante
 - Geração de respostas utilizando RAG
 
-Para mais detalhes sobre as decisões arquiteturais, modelos escolhidos e configurações técnicas, consulte o [ADR (Architecture Decision Record)](ADR.md).
+Há também 2 serviços secundários (Ollama e ChromaDB). Para mais detalhes sobre as decisões arquiteturais, modelos escolhidos e configurações técnicas, consulte o [ADR (Architecture Decision Record)](ADR.md).
 
 ---
 
