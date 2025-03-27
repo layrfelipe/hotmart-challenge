@@ -80,16 +80,17 @@ foreach ($question in $questions) {
     }
 }
 
-# # 4. Full Blog Ingestion
+# 4. Full Blog Ingestion
 # try {
-#     Write-Host "2. Ingesting full blog content..." -NoNewline
-#     $ingestResponse = curl -s -X GET "$BASE_URL/ingest_full_blog_content"
+#     Write-Host "4. Ingesting full blog content..." -NoNewline
+#     $response = Invoke-RestMethod -Uri "$BASE_URL_INGEST_SERVICE/ingest_full_blog_content" -Method Get
 #     Write-Host " [OK]" -ForegroundColor Green
-#     $ingestResponse | Format-List | Out-Host
+#     $response | Format-List | Out-Host
 # }
 # catch {
 #     Write-Host " [FAILED]" -ForegroundColor Red
 #     Write-Host "Error: $_" -ForegroundColor Red
+#     exit 1
 # }
 
 Write-Host "`n=== Test completed ===" -ForegroundColor Cyan
