@@ -140,7 +140,9 @@ pytest
 - O modelo Mistral é razoavelmente leve e pode ter limitações em respostas complexas
 - Por uma questão de adequação ao contexto proposto, as respostas são sempre geradas em português
 - O sistema utiliza embeddings multilíngues para melhor processamento do português, tive certa dificuldade em achar modelos leves e eficientes treinados em PT-BR
-- Se houvesse mais tempo eu implementaria uma combinação de busca semântica com busca lexical visando ter mais precisão na busca por vetores mais relacionados aos prompts
+- Se houvesse mais tempo eu implementaria uma combinação de 2 coisas importantes que ficaram de fora:
+    - busca semântica com busca lexical visando ter mais precisão na busca por vetores mais relacionados aos prompts
+    - testes de integração entre as os containers
 
 ## Contato
 
