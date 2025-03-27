@@ -1,10 +1,11 @@
 # Protótipo Hotmart RAG
 
-Sistema de Retrieval-Augmented Generation (RAG) para conhecimento sobre a Hotmart. Este sistema permite a ingestão de conteúdo e consultas utilizando RAG para fornecer respostas precisas sobre a Hotmart.
+Sistema de Retrieval-Augmented Generation (RAG) para conhecimento sobre a Hotmart. Este sistema permite a ingestão de conteúdo e consultas utilizando RAG para fornecer respostas precisas sobre a Hotmart. Vale destacar que todas as tecnologias utiliadas no projeto são open source.
 
 ## Tecnologias Utilizadas
 - **RAG Framework**: LangChain
-- **LLM**: mistral (open-source)
+- **LLM**: Mistral (7B)
+- **Execução do LLM**: Ollama
 - **Vector DB**: ChromaDB
 - **Backend**: FastAPI
 - **Embeddings**: Multilingual-E5-Small (HuggingFace)
@@ -63,9 +64,9 @@ docker-compose ps
 }
 ```
 
-#### 2. Ingestão de Blog
+#### 2. Ingestão de Blog (extra)
 - **Endpoint**: POST `/ingest_full_blog_content`
-- **Descrição**: Realiza scraping e ingestão automática do conteúdo do blog da Hotmart
+- **Descrição**: Realiza scraping e ingestão automática do conteúdo completo do blog da Hotmart
 
 ### Query Service (http://localhost:8001)
 
@@ -86,16 +87,25 @@ A documentação completa da API está disponível através do Swagger UI:
 
 ## Desenvolvimento e Testes
 
-### Instalação de Dependências para Desenvolvimento
+### Instalação de Dependências
 ```bash
 # Instale as dependências de desenvolvimento
+
+## Acesse cada serviço (ingest_service e query_service) separadamente para criar seus virtual environments e realizar os testes
+python -m venv venv
+venv/scripts/activate
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 ```
 
 ### Executando Testes
 ```bash
-# Execute todos os testes
+# Ingest Service (partindo da raíz do projeto)
+cd /ingest_service
+pytest
+
+# Query Service partindo da raíz do projeto)
+cd /query_service
 pytest
 ```
 
@@ -104,23 +114,9 @@ pytest
 ### Limitações e Considerações
 
 - O sistema está configurado para processar textos de até 50.000 caracteres
-- O modelo mistral é razoavelmente leve e pode ter limitações em respostas complexas
-- As respostas são geradas em português
-- O sistema utiliza embeddings multilíngues para melhor processamento do português
-
-### Troubleshooting
-
-#### Problemas Comuns
-
-1. **Erro de Memória**
-   - Aumente a memória disponível para o Docker
-   - Verifique se há outros processos consumindo muita memória
-
-2. **Serviços Não Iniciam**
-   ```bash
-   # Verifique os logs
-   docker-compose logs -f
-   ```
+- O modelo Mistral é razoavelmente leve e pode ter limitações em respostas complexas
+- Por uma questão de adequação ao contexto proposto, as respostas são sempre geradas em português
+- O sistema utiliza embeddings multilíngues para melhor processamento do português, tive certa dificuldade em achar modelos leves e eficientes treinados em PT-BR
 
 ## Contato
 
