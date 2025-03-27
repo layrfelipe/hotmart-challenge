@@ -11,6 +11,8 @@ Sistema de Retrieval-Augmented Generation (RAG) para conhecimento sobre a Hotmar
 - **Embeddings**: Multilingual-E5-Small (HuggingFace)
 - **Orquestração**: Docker Compose
 
+---
+
 ## Arquitetura do Sistema
 
 O sistema é composto por dois serviços principais:
@@ -27,6 +29,8 @@ O sistema é composto por dois serviços principais:
 - Geração de respostas utilizando RAG
 
 Para mais detalhes sobre as decisões arquiteturais, modelos escolhidos e configurações técnicas, consulte o [ADR (Architecture Decision Record)](ADR.md).
+
+---
 
 ## Pré-requisitos
 - Docker e Docker Compose instalados
@@ -50,6 +54,8 @@ docker-compose up --build -d
 ```bash
 docker-compose ps
 ```
+
+---
 
 ## Endpoints Disponíveis
 
@@ -79,11 +85,15 @@ docker-compose ps
 }
 ```
 
+---
+
 ## Documentação da API
 
 A documentação completa da API está disponível através do Swagger UI:
 - Ingest Service: http://localhost:8000/docs
 - Query Service: http://localhost:8001/docs
+
+---
 
 ## Desenvolvimento e Testes
 
@@ -108,6 +118,8 @@ pytest
 cd /query_service
 pytest
 ```
+
+---
 
 ## Estrutura do Projeto
 
