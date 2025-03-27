@@ -4,7 +4,7 @@ from pathlib import Path
 from unittest.mock import patch, Mock
 from requests.exceptions import RequestException
 
-#sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent))
 from scraper import scrape_content, ScraperException
 
 @pytest.fixture

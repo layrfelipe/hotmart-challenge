@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 from unittest.mock import patch, Mock
 
-#sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent))
 from text_processor import process_and_store_text, TextProcessorException
 
 @pytest.fixture

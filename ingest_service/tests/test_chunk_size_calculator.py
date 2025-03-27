@@ -2,8 +2,7 @@ import pytest
 import sys
 from pathlib import Path
 
-#sys.path.append(str(Path(__file__).parent.parent))
-
+sys.path.append(str(Path(__file__).parent.parent))
 from chunk_size_calculator import calculate_dynamic_chunk_params, BASE_CHUNK_SIZE, BASE_OVERLAP_SIZE
 
 def test_small_text_chunking():

@@ -4,8 +4,8 @@ import pytest
 from unittest.mock import Mock, patch
 
 # Add parent directory to system path
-#sys.path.append(str(Path(__file__).parent.parent))
-from query_service.rag_chain.rag_chain import HotmartRAGSystem
+sys.path.append(str(Path(__file__).parent.parent))
+from rag_chain import HotmartRAGSystem
 
 @pytest.fixture
 def mock_vector_store():

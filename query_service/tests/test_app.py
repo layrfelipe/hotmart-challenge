@@ -1,13 +1,11 @@
 import sys
 from pathlib import Path
-from fastapi import HTTPException
 from fastapi.testclient import TestClient
 from unittest.mock import patch
 
-# Add parent directory to system path
-#sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent))
 from app import app
-from query_service.rag_chain.rag_chain import RAGException
+from rag_chain import RAGException
 
 client = TestClient(app)
 

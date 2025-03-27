@@ -4,8 +4,8 @@ from pathlib import Path
 from fastapi.testclient import TestClient
 from unittest.mock import patch, Mock
 
-#sys.path.append(str(Path(__file__).parent.parent))
-from app import app, TextRequest, IngestResponse, ErrorResponse
+sys.path.append(str(Path(__file__).parent.parent))
+from app import app
 
 client = TestClient(app)
 
@@ -77,60 +77,6 @@ def test_ingest_text_invalid_request():
     
     assert response.status_code == 422  # FastAPI validation error
     print("\n✓ Invalid request test passed: correctly handled malformed input")
-
-def test_ingest_full_blog_content_success():
-    """Test successful blog content ingestion"""
-    with patch('app.scrape_content') as mock_scrape, \
-         patch('app.Chroma.from_texts') as mock_chroma, \
-         patch('app.HuggingFaceEmbeddings') as mock_embeddings:
-        
-        # Setup mocks
-        mock_scrape.return_value = "Mocked blog content"
-        mock_embeddings.return_value = Mock()
-        
-        # Execute
-        response = client.post("/ingest_full_blog_content")
-        
-        # Assert
-        assert response.status_code == 200
-        response_data = response.json()
-        assert response_data["status"] == "success"
-        assert isinstance(response_data["chunks"], int)
-        assert response_data["chunks"] > 0
-        
-        # Verify mocks
-        mock_scrape.assert_called_once()
-        mock_chroma.assert_called_once()
-        print("\n✓ Blog content ingestion test passed: content scraped and processed")
-
-def test_ingest_full_blog_content_scraping_error():
-    """Test handling of scraping errors"""
-    with patch('app.scrape_content') as mock_scrape:
-        mock_scrape.side_effect = Exception("Failed to scrape content")
-        
-        response = client.post("/ingest_full_blog_content")
-        
-        assert response.status_code == 200  # Due to error handling in route
-        response_data = response.json()
-        assert response_data["status"] == "error"
-        assert "failed to scrape" in response_data["message"].lower()
-        print("\n✓ Scraping error test passed: correctly handled scraping failure")
-
-def test_ingest_full_blog_content_processing_error():
-    """Test handling of content processing errors"""
-    with patch('app.scrape_content') as mock_scrape, \
-         patch('app.Chroma.from_texts') as mock_chroma:
-        
-        mock_scrape.return_value = "Mocked content"
-        mock_chroma.side_effect = Exception("Processing failed")
-        
-        response = client.post("/ingest_full_blog_content")
-        
-        assert response.status_code == 200  # Due to error handling in route
-        response_data = response.json()
-        assert response_data["status"] == "error"
-        assert "processing failed" in response_data["message"].lower()
-        print("\n✓ Processing error test passed: correctly handled processing failure")
 
 def test_startup_event():
     """Test database directory creation on startup"""

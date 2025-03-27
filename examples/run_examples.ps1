@@ -83,7 +83,7 @@ foreach ($question in $questions) {
 # # 4. Full Blog Ingestion
 # try {
 #     Write-Host "2. Ingesting full blog content..." -NoNewline
-#     $ingestResponse = curl -s -X POST "$BASE_URL/ingest_full_blog_content" | ConvertFrom-Json
+#     $ingestResponse = curl -s -X GET "$BASE_URL/ingest_full_blog_content"
 #     Write-Host " [OK]" -ForegroundColor Green
 #     $ingestResponse | Format-List | Out-Host
 # }

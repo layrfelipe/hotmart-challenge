@@ -63,6 +63,7 @@ Serviços auxiliares implementados:
 `ingest_full_blog_content` - ingere automaticamente todo o conteúdo do blog Hotmart
 
 **Motivação:**
+- Funcionalidade extra
 - Elimina a necessidade de ingestão manual
 - Enriquece a base de conhecimento do sistema RAG
 
