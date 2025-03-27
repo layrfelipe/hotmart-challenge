@@ -25,6 +25,8 @@ O sistema é composto por dois serviços principais:
 - Recuperação de contexto relevante
 - Geração de respostas utilizando RAG
 
+Para mais detalhes sobre as decisões arquiteturais, modelos escolhidos e configurações técnicas, consulte o [ADR (Architecture Decision Record)](ADR.md).
+
 ## Pré-requisitos
 - Docker e Docker Compose instalados
 - Mínimo de 8GB de RAM disponível
