@@ -1,4 +1,4 @@
-# Hotmart RAG Prototype
+# Protótipo Hotmart RAG
 
 Sistema de Retrieval-Augmented Generation (RAG) para conhecimento sobre a Hotmart. Este sistema permite a ingestão de conteúdo e consultas utilizando RAG para fornecer respostas precisas sobre a Hotmart.
 
