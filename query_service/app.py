@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 from rag_chain import QueryRequest, QueryResponse, RAGException, HotmartRAGSystem
 
@@ -14,6 +15,19 @@ app = FastAPI(
         "email": "layrfpf@gmail.com",
     },
 )
+
+class HealthResponse(BaseModel):
+    status: str = Field(..., description="Health status")
+
+@app.get(
+        '/health',
+        response_model=HealthResponse,
+        tags=["Health"],
+        summary="Check if API is running",
+        description="Returns the status of the ingest service"
+)
+async def health():
+    return HealthResponse(status="ok")
 
 @app.post(
     "/query",

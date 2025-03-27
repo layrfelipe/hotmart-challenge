@@ -25,6 +25,9 @@ class ErrorResponse(BaseModel):
     status: str = Field(..., description="Error status")
     message: str = Field(..., description="Error message details")
 
+class HealthResponse(BaseModel):
+    status: str = Field(..., description="Health status")
+
 app = FastAPI(
     title="Hotmart RAG Ingest Service",
     description="""
@@ -42,6 +45,16 @@ app = FastAPI(
 async def startup_event():
     """Initialize necessary directories on startup"""
     os.makedirs(CHROMA_DB_PERSIST_DIRECTORY, exist_ok=True)
+
+@app.get(
+        '/health',
+        response_model=HealthResponse,
+        tags=["Health"],
+        summary="Check if API is running",
+        description="Returns the status of the ingest service"
+)
+async def health():
+    return HealthResponse(status="ok")
 
 @app.post(
     "/ingest_text",
@@ -81,7 +94,7 @@ async def ingest_text(request: TextRequest):
     except Exception as e:
         return ErrorResponse(status="error", message=str(e))
 
-@app.post(
+@app.get(
     "/ingest_full_blog_content",
     response_model=Union[IngestResponse, ErrorResponse],
     tags=["Ingestion"],
