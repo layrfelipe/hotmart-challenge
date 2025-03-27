@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./chroma_db:/app/chroma_db
+      - chroma_data:/app/chroma_db
     depends_on:
       - chroma
 
@@ -15,7 +15,7 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      - ./chroma_db:/app/chroma_db
+      - chroma_data:/app/chroma_db
     depends_on:
       - chroma
       - ollama
@@ -25,9 +25,12 @@ services:
     ports:
       - "8002:8000"
     volumes:
-      - ./chroma_db:/chroma/chroma_db
+      - chroma_data:/chroma/chroma_db
 
   ollama:
     build: ./ollama_service
     ports:
       - "11434:11434"
+
+volumes:
+  chroma_data:
