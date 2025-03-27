@@ -3,6 +3,7 @@
 Sistema de Retrieval-Augmented Generation (RAG) para conhecimento sobre a Hotmart. Este sistema permite a ingestão de conteúdo e consultas utilizando RAG para fornecer respostas precisas sobre a Hotmart. Vale destacar que todas as tecnologias utiliadas no projeto são open source.
 
 ## Tecnologias Utilizadas
+- **Versão Python**: 3.10
 - **RAG Framework**: LangChain
 - **LLM**: Mistral (7B)
 - **Execução do LLM**: Ollama
