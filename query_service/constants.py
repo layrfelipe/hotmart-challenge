@@ -1,0 +1,1 @@
+CHROMA_DB_PERSIST_DIRECTORY = "./chroma_db"
